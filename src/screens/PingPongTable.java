@@ -1,6 +1,5 @@
 /**
- * Этот класс рисует стол для пинг-понга и отображает координаты точки,
- * где пользователь кликнул мышью
+ * Этот класс рисует стол для пинг-понга, шар, ракетки, отображает счет
  */
 
 package screens;
@@ -12,17 +11,15 @@ import java.awt.*;
 
 public class PingPongTable extends JPanel implements GameConstant{
 
-    JLabel label;
-
-    public Point point = new Point (0,0);
-
-    public int computerRacet_x = 15;
+    private JLabel label;
+    private int computerRacket_y = COMPUTER_RACKET_Y_START;
     private int playerRacket_y = PLAYER_RACKET_Y_START;
+    private int ballX = BALL_START_X;
+    private int ballY = BALL_START_Y;
 
     Dimension preferredSize = new Dimension (TABLE_WIDTH, TABLE_HEIGHT);
 
-    //Этот метод устанавливает размер окна
-
+    //Этот метод устанавливает размер окна. Вызывается виртуальной машиной
     public Dimension getPreferredSize(){
         return preferredSize;
     }
@@ -32,67 +29,87 @@ public class PingPongTable extends JPanel implements GameConstant{
 
         PingPongEngine pingPongEngine = new PingPongEngine (this);
 
-        //Обрабатывает клики мыши для отображения ее координаты
-        addMouseListener ( pingPongEngine );
-
         //Обрабатывает движение мыши для передвижения ракеток.
         addMouseMotionListener ( pingPongEngine );
+
+        //Обрабатывает события клавиатуры
+        addKeyListener ( pingPongEngine );
     }
 
-    //Добавить панел JPanel в окно
+    //Добавить панель JPanel в окно
     void addPanelToFrame(Container container){
-        container.setLayout ( new BoxLayout ( container, BoxLayout.Y_AXIS ) );
 
+        container.setLayout ( new BoxLayout ( container, BoxLayout.Y_AXIS ) );
         container.add ( this );
 
-        label = new JLabel ("Нажми для показа координаты");
+        label = new JLabel ("Нажми N для новой игры, S  для сохранения, Q для выхода");
         container.add(label);
     }
 
-    //Перерисовать окно. Этот метод вызывается виртуальной машиной, ктогда
+    //Перерисовать окно. Этот метод вызывается виртуальной машиной, когда
     //нужно обновить экран или вызывается метод repaint() из PingPongEngine
     public void paintComponent(Graphics g){
 
         super.paintComponent ( g );
-        g.setColor ( Color.GREEN );
 
-        //Нарисвоать стол
+        //Нарисовать зеленый стол
+        g.setColor ( Color.GREEN );
         g.fillRect ( 0,0,TABLE_WIDTH, TABLE_HEIGHT );
-        g.setColor ( Color.yellow);
 
         //Нарисовать правую ракетку
-        g.fillRect ( PLAYER_RACKET_X_START, playerRacket_y, 5, 30 );
+        g.setColor ( Color.yellow);
+        g.fillRect ( PLAYER_RACKET_X_START, playerRacket_y, RACKET_WIDTH, RACKET_LENGTH );
+
+        //Нарисовать левую ракетку
         g.setColor ( Color.BLUE );
+        g.fillRect ( COMPUTER_RACKET_X, computerRacket_y, RACKET_WIDTH, RACKET_LENGTH );
 
-        //Нарисвовать левую ракетку
-        g.fillRect ( computerRacet_x, 100, 5,30 );
+        //Нарисовать мяч
         g.setColor ( Color.RED );
+        g.fillOval ( ballX, ballY,10, 10);
 
-        //нарисвоать мяч
-        g.fillOval ( 25,110,10,10 );
+        //Нарисовать белые линии
         g.setColor ( Color.white );
-
         g.drawRect ( 10,10,300,200 );
         g.drawLine ( 160,10,160,210 );
 
-        //Отобразить точку как маленький квадрат 2х2 пикселей
-        if(point != null){
-
-            label.setText ( "Координаты (x,y): "+point.x + " "+ point.y );
-            g.fillRect ( point.x,point.y, 2,2 );
-        }
+        //Установить фокус на стол, чтобы обработчик клавиатуры мог посылать команды столу
+        requestFocus ();
     }
 
     //Установить текущее положение ракетки игрока
     public void setPlayerRacket_y(int xCoordinate){
         this.playerRacket_y = xCoordinate;
+        repaint ();
     }
 
     //Вернуть текущее положение ракетки ребенка
     public int getPlayerRacket_Y(int xCoordinate){
         return playerRacket_y;
     }
+
+    //Установить текущее положение ракетки компьютера
+
+    public void setComputerRacket_Y(int yCoordinate) {
+        this.computerRacket_y = yCoordinate;
+        repaint ();
+    }
+
+    //Установить игровое сообщение
+    public void setMessageText(String text){
+        label.setText ( text );
+        repaint ();
+    }
+
+    //Установить позицию мяча
+    public void setBallPosition(int ballx, int bally){
+        this.ballX = ballx;
+        this.ballY = bally;
+        repaint ();
+    }
+
     public static void main(String[] args) {
+
         //Создать экземпляр окна
         JFrame f = new JFrame ("Пинг-Понг");
 
@@ -100,11 +117,12 @@ public class PingPongTable extends JPanel implements GameConstant{
         f.setDefaultCloseOperation ( WindowConstants.EXIT_ON_CLOSE );
 
         PingPongTable pingPongTable = new PingPongTable ();
+        pingPongTable.addPanelToFrame ( f.getContentPane () );
 
         pingPongTable.addPanelToFrame ( f.getContentPane () );
 
         //Установить размер окна и сделать его видимым
-        f.pack ();
+        f.setBounds ( 0,0, TABLE_WIDTH+5, TABLE_HEIGHT+40 );
         f.setVisible ( true );
     }
 }

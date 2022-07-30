@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="895457ed-8ef2-4b87-9315-ac88a0ef911c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/engine/PingPongEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/GameConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/PingPongTable.java" afterDir="false" />
+    <list default="true" id="895457ed-8ef2-4b87-9315-ac88a0ef911c" name="Changes" comment="0.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/PingPongEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/PingPongEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/GameConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/GameConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/PingPongTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/PingPongTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +37,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="screens" />
@@ -57,6 +57,14 @@
       <option name="presentableId" value="Default" />
       <updated>1659037024985</updated>
     </task>
+    <task id="LOCAL-00001" summary="0.1">
+      <created>1659041146643</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1659041146643</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -69,5 +77,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1" />
   </component>
 </project>
