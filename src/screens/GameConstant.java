@@ -26,7 +26,7 @@ public interface GameConstant {
     public final int BALL_START_Y = TABLE_HEIGHT/2;
 
     //Размер, положение и шаг перемещения ракеток
-    public final int PLAYER_RACKET_X_START = 300;
+    public final int PLAYER_RACKET_X = 300;
     public final int PLAYER_RACKET_Y_START = 100;
     public final int COMPUTER_RACKET_X = 15;
     public final int COMPUTER_RACKET_Y_START = 100;

@@ -58,7 +58,7 @@ public class PingPongTable extends JPanel implements GameConstant{
 
         //Нарисовать правую ракетку
         g.setColor ( Color.yellow);
-        g.fillRect ( PLAYER_RACKET_X_START, playerRacket_y, RACKET_WIDTH, RACKET_LENGTH );
+        g.fillRect ( PLAYER_RACKET_X, playerRacket_y, RACKET_WIDTH, RACKET_LENGTH );
 
         //Нарисовать левую ракетку
         g.setColor ( Color.BLUE );
@@ -78,13 +78,13 @@ public class PingPongTable extends JPanel implements GameConstant{
     }
 
     //Установить текущее положение ракетки игрока
-    public void setPlayerRacket_y(int xCoordinate){
-        this.playerRacket_y = xCoordinate;
+    public void setPlayerRacket_y(int playerRacket_y){
+        this.playerRacket_y = playerRacket_y;
         repaint ();
     }
 
     //Вернуть текущее положение ракетки ребенка
-    public int getPlayerRacket_Y(int xCoordinate){
+    public int getPlayerRacket_Y(){
         return playerRacket_y;
     }
 
